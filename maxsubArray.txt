@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+int Array(const std::vector<int>& nums) {
+	int now_sum = nums[0];
+	int max_sum = nums[0];
+
+	for (int i = 1; i < nums.size(); ++i) {
+		now_sum = std::max(now_sum + nums[i], nums[i]);
+		std::cout << now_sum << std::endl;
+		max_sum = std::max(max_sum, now_sum);
+	}
+
+	return max_sum;
+};
+
+
+
+int main() {
+	std::vector<int> A = { -2,1,-3,4,-1,2,1,-5,4 };
+	std::cout << Array(A) << std::endl;
+}
