@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+void sth(int value) {
+	std::cout << "Value:" <<value<<std::endl;
+}
+
+void Foreach(const std::vector<int>& values,void(*func)(int)) {
+	for (int value : values) {
+		func(value);
+	}
+}
+
+int main() {
+	std::vector<int> vector = { 2,3,4,5,6,7 };
+	Foreach(vector, sth);
+	Foreach(vector, [](int value) {
+		std::cout << "Value:" << value << std::endl;
+		});
+}
