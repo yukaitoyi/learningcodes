@@ -1,0 +1,22 @@
+#include<iostream>
+#include<thread>
+
+static bool s_finished = false;
+void Dowork() {
+	using namespace std::literals::chrono_literals;
+
+	while (!s_finished)
+	{
+		std::cout << "working\n";
+		std::this_thread::sleep_for(1s);
+	}
+}
+
+int main() {
+	std::thread worker(Dowork);
+	std::cin.get();
+	s_finished = true;
+	worker.join();
+
+	std::cin.get();
+}
